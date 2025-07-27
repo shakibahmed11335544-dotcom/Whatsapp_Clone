@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "cd client && npm run build && mkdir -p ../server/public && cp -r dist/* ../server/public/"
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
