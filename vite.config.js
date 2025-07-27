@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development"
       ? {
           name: "inject-chef-dev",
-          transform(code: string, id: string) {
+          transform(code, id) {
             if (id.includes("main.tsx")) {
               return {
                 code: `${code}
@@ -40,4 +40,9 @@ window.addEventListener('message', async (message) => {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  preview: {
+    port: 10000,
+    host: true,
+    allowedHosts: ["whatsapp-clone-sl17.onrender.com"]
+  }
 }));
