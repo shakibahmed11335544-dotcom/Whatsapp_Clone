@@ -1,3 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b141a;
+  color: white;
+}
+.container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+.navbar {
+  background: #202c33;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.chat-window {
+  flex: 1;
+  background: #111b21;
+  padding: 10px;
+  overflow-y: auto;
+}
+.message {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: #005c4b;
+  max-width: 70%;
+}
+.input-bar {
+  display: flex;
+  background: #202c33;
+  padding: 10px;
+}
+.input-bar input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+.input-bar button {
+  background: #00a884;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111b21;
+}
+.auth-box {
+  background: #202c33;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+}
+.auth-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+}
+.auth-box button {
+  width: 100%;
+  padding: 10px;
+  background: #00a884;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}

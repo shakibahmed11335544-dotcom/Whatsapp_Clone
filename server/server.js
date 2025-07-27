@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 app.use(cors());
@@ -28,31 +29,36 @@ app.post('/api/auth/register', (req, res) => {
   }
   const newUser = { id: Date.now().toString(), email, password };
   users.push(newUser);
-  res.json({ token: newUser.id });
+  res.json({ token: newUser.id, email: newUser.email });
 });
 
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
   const user = users.find(u => u.email === email && u.password === password);
   if (!user) return res.status(400).json({ error: 'Invalid credentials' });
-  res.json({ token: user.id });
+  res.json({ token: user.id, email: user.email });
 });
 
-// ---- Message Routes ----
-app.get('/api/messages/get', auth, (req, res) => {
+// ---- Messages Routes ----
+app.get('/api/messages', auth, (req, res) => {
   res.json(messages);
 });
 
-app.post('/api/messages/send', auth, (req, res) => {
+app.post('/api/messages', auth, (req, res) => {
   const { content } = req.body;
   const msg = { content, sender: req.user.email, createdAt: new Date() };
   messages.push(msg);
   res.json(msg);
 });
 
-// ---- Voice message (optional stub) ----
-const multer = require('multer');
-const upload = multer({ dest: 'server/uploads/' });
+// ---- Voice Messages ----
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'uploads'),
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+const upload = multer({ storage });
 
 app.post('/api/messages/voice', auth, upload.single('voice'), (req, res) => {
   const msg = { voiceFile: `/uploads/${req.file.filename}`, sender: req.user.email, createdAt: new Date() };
@@ -60,7 +66,7 @@ app.post('/api/messages/voice', auth, upload.single('voice'), (req, res) => {
   res.json(msg);
 });
 
-// ---- Serve client build ----
+// ---- Serve frontend build ----
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));

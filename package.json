@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "install": "cd client && npm install && cd ../server && npm install",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm run build && cp -r client/dist/* server/public/",
     "start": "node server/server.js"
   }
 }

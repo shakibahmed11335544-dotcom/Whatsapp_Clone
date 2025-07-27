@@ -1,15 +1,19 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useState } from 'react'
 import Login from './pages/Login'
-import Chat from './pages/Chat'
+import Register from './pages/Register'
+import ChatWindow from './components/ChatWindow'
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/chat" element={<Chat />} />
-      </Routes>
-    </BrowserRouter>
-  )
+  const [token, setToken] = useState(localStorage.getItem('token'))
+  const [page, setPage] = useState(token ? 'chat' : 'login')
+
+  const handleLogin = (token) => {
+    localStorage.setItem('token', token)
+    setToken(token)
+    setPage('chat')
+  }
+
+  if (page === 'login') return <Login onLogin={handleLogin} switchToRegister={() => setPage('register')} />
+  if (page === 'register') return <Register onRegister={handleLogin} switchToLogin={() => setPage('login')} />
+  return <ChatWindow token={token} />
 }
