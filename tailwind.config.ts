@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  defaultTheme: "dark",
   content: ["./client/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -58,14 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        "chat-bg": "hsl(var(--chat-bg))",
-        "chat-sidebar": "hsl(var(--chat-sidebar))",
-        "message-sent": "hsl(var(--message-sent))",
-        "message-received": "hsl(var(--message-received))",
-        "message-sent-text": "hsl(var(--message-sent-text))",
-        "message-received-text": "hsl(var(--message-received-text))",
-        "chat-input-bg": "hsl(var(--chat-input-bg))",
-        "online-status": "hsl(var(--online-status))",
       },
       borderRadius: {
         lg: "var(--radius)",
