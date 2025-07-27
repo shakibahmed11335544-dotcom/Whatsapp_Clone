@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { LogOutIcon, MessageCircleIcon, SettingsIcon } from "lucide-react";
+import { LogOutIcon, MessageCircleIcon, SettingsIcon, UserPlusIcon } from "lucide-react";
 import NotificationSystem from "@/components/NotificationSystem";
 import StatusSelector from "@/components/StatusSelector";
 import { Link } from "react-router-dom";
@@ -102,14 +102,21 @@ export default function Index() {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-xl blur opacity-75"></div>
-                <div className="relative bg-gradient-to-r from-primary to-primary/90 p-2 rounded-xl">
-                  <MessageCircleIcon className="h-5 w-5 text-primary-foreground" />
+                <div className="relative bg-gradient-to-r from-primary to-primary/90 px-2.5 py-1.5 rounded-xl flex items-center justify-center">
+                  <span className="text-lg font-bold text-primary-foreground tracking-tighter">
+                    G<span className="text-primary-foreground/80">K</span>
+                  </span>
                 </div>
               </div>
               <h1 className="text-xl font-bold gradient-text">GoponKotha</h1>
             </div>
             <div className="flex items-center gap-2">
               <NotificationSystem />
+              <Link to="/connect">
+                <Button variant="ghost" size="icon" className="h-12 w-12 hover:bg-white/10 rounded-xl" title="Connect with People">
+                  <UserPlusIcon className="h-5 w-5" />
+                </Button>
+              </Link>
               <Link to="/settings">
                 <Button variant="ghost" size="icon" className="h-12 w-12 hover:bg-white/10 rounded-xl">
                   <SettingsIcon className="h-5 w-5" />
@@ -178,7 +185,9 @@ export default function Index() {
 
               <div className="relative text-center animate-fade-in">
                 <div className="w-24 h-24 glass rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
-                  <MessageCircleIcon className="w-12 h-12 text-primary" />
+                  <span className="text-4xl font-bold gradient-text tracking-tighter">
+                    G<span className="opacity-80">K</span>
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Welcome to GoponKotha</h3>
                 <p className="text-muted-foreground max-w-md">

@@ -55,8 +55,10 @@ export default function Signup() {
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-2xl blur opacity-75"></div>
-              <div className="relative bg-gradient-to-r from-primary to-primary/90 p-4 rounded-2xl shadow-xl">
-                <MessageCircleIcon className="h-8 w-8 text-primary-foreground" />
+              <div className="relative bg-gradient-to-r from-primary to-primary/90 p-3 rounded-2xl shadow-xl flex items-center justify-center">
+                <span className="text-2xl font-bold text-primary-foreground tracking-tighter">
+                  G<span className="text-primary-foreground/80">K</span>
+                </span>
               </div>
             </div>
             <div>
